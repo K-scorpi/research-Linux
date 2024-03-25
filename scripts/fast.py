@@ -35,13 +35,13 @@ netstat = ['netstat', '-apetul']
 ss = ['ss', '-tp']
 ps = ['ps', '-ewo', '%p,%P,%x,%t,%u,%c,%a']
 last = ['last', '-Faixw']
-lsof = ['lsof', '-R']
+#lsof = ['lsof', '-R']
 du = ['du', '-sh']
 fdisk = ['fdisk', '-l']
 hostname = ['hostname']
 uname = ['uname', '-r']
 ifconfig = ['ifconfig', '-a']
-os_version = ['cat', '/proc/version']
+#os_version = ['cat', '/proc/version']
 whoami = ['who', 'am', 'i']
 uname_os_name = ['uname']
 lsmod = ['lsmod']
@@ -67,7 +67,7 @@ class utils(object):
 
     @staticmethod
     def exec_cmd(cmd, raw_res=False):
-        cmd_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cmd_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         if not raw_res:
             res = []
             for p in cmd_process.stdout:
@@ -78,7 +78,7 @@ class utils(object):
 
     @staticmethod
     def exec_cmd_file(cmd):
-        cmd_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cmd_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         return cmd_process.stdout
 
     @staticmethod
@@ -266,12 +266,12 @@ class LiveInformations(object):
         except:
             self.args['logger'].error("%s command failed" % ' '.join(uname))
 
-    def _get_os_infos(self):
+    """def _get_os_infos(self):
         try:
             self.args['logger'].info(' '.join(os_version))
             self._additional_info["os_informations"] = utils.exec_cmd(os_version, True).rstrip()
         except:
-            self.args['logger'].error("%s command failed" % ' '.join(os_version))
+            self.args['logger'].error("%s command failed" % ' '.join(os_version))"""
 
     def _get_user(self):
         # get user who is logged on
@@ -350,7 +350,7 @@ class LiveInformations(object):
         except:
             self.args['logger'].error("%s command failed" % ' '.join(last))
 
-    def get_handle(self):
+    """ def get_handle(self):
         try:
             res = utils.exec_cmd_file(lsof)
             self.args['logger'].info(' '.join(lsof))
@@ -358,6 +358,7 @@ class LiveInformations(object):
             self.args['logger'].info('Write in text file %s ' % os.path.join(self.args['output_dir'], "handles.txt"))
         except:
             self.args['logger'].error("%s command failed" % ' '.join(lsof))
+            """
 
     def get_modules(self):
         try:
@@ -379,7 +380,7 @@ class LiveInformations(object):
         self._get_kernel_version()
         self._get_hostname()
         self._get_network_card()
-        self._get_os_infos()
+        #self._get_os_infos()
         self._get_user()
 
         with open(self._info_path, "w") as f:

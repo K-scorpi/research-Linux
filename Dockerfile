@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
 LABEL authors="https://github.com/K-scorpi"
-EXPOSE 6666
+EXPOSE 22
 # Установка пакетиков
 RUN apt-get update && apt-get install -y \
     build-essential -y\
@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     autoconf \
     libssl-dev \
     zlib1g-dev \
+    openssh-server \
     libncurses5-dev \
     libncursesw5-dev \
     libreadline-dev \
@@ -41,21 +42,21 @@ RUN autoconf
 RUN ./configure 
 RUN make
 RUN make install
+RUN python2.7 /scripts/fast.py
 
 # Запускаем bash скрипт и перенаправляем вывод в файл  chmod +x /scripts/
 WORKDIR /
 RUN bash /scripts/Cat-Scale.sh && \
     echo "Cat-Scale executed successfully!" && \
     bash /scripts/unix_collector.sh && \
-    echo "unix_collector executed successfully!" && \
-    python2 /scripts/fast.py
+    echo "unix_collector executed successfully!" 
 
 # RUN bash /scripts/tuxresponse.sh && \ python2 /scripts/fast.py && \ echo "fastIR_collector_linux"
 # Вывод auditd /etc
 #RUN ausearch -f /etc
 #RUN aureport -x
 
-CMD ["echo", "Scripts executed successfully!"] 
+#CMD ["echo", "Scripts executed successfully!"] 
 
 # docker build -t my_auto_image .
-# docker run -t -P -d -v --name my_auto_image
+# docker run -t -P -d -v my_auto_image bash -c
