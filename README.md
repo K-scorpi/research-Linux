@@ -120,13 +120,6 @@ auditd
 [5] https://habr.com/ru/articles/553036/
 https://linux-audit.com/tuning-auditd-high-performance-linux-auditing/
 
-
-Имя скрипта 	Docker	Logs	Music	Persistence(Службы и драйвер)	Podman	Process_and_Network	System_Info	User_Files	Virsh(управление ВМ)	Install Software
-CatScale 	+	+	+	+	+	+	+	+	-	
-FastIR Collector Linux (python 2)		+(last_output)	-	+(drivers)		+(netstat)	+	+(fs)		
-unix_collector 		+		+		+	+	+		
-TuxResponse 		+(/var/log)				+	+	+		+
-
 Для того чтобы включить набор клавиатуры в Docker контейнере, используется механизм проброса клавиатуры из хост-системы в контейнер.
 docker run -it my_auto_image 
 
