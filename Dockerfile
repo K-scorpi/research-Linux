@@ -51,12 +51,10 @@ RUN bash /scripts/Cat-Scale.sh && \
     bash /scripts/unix_collector.sh && \
     echo "unix_collector executed successfully!" 
 
-# RUN bash /scripts/tuxresponse.sh && \ python2 /scripts/fast.py && \ echo "fastIR_collector_linux"
-# Вывод auditd /etc
-#RUN ausearch -f /etc
-#RUN aureport -x
-
-#CMD ["echo", "Scripts executed successfully!"] 
+# RUN bash /scripts/tuxresponse.sh  через 60 строку
+    # aureport -f \
+    # ausearch -tm cron
 
 # docker build -t my_auto_image .
-# docker run -t -P -d -v my_auto_image bash -c
+# docker run -t -d my_auto_image  Запуск в фоне 
+# docker run -it my_auto_image   Запуск bash и терминалом

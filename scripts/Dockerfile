@@ -1,7 +1,11 @@
 FROM ubuntu:20.04
 RUN apt-get update && apt-get install -y 
 RUN apt-get install auditd -y
-RUN apt-get install sudo
+RUN apt-get install sudo -y\
+    nano \
+    strace \
+    rpm -y
+
 # sudo apt-get install systemd -y
 # wget https://raw.githubusercontent.com/Neo23x0/auditd/master/audit.rules
 
