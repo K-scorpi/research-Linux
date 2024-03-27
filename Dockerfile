@@ -51,9 +51,9 @@ RUN bash /scripts/Cat-Scale.sh && \
     bash /scripts/unix_collector.sh && \
     echo "unix_collector executed successfully!" 
 
-# RUN bash /scripts/tuxresponse.sh  через 60 строку
-    # aureport -f \
-    # ausearch -tm cron
+# bash /scripts/tuxresponse.sh  через 60 строку
+# aureport -f 
+# ausearch -tm cron
 
 # docker build -t my_auto_image .
 # docker run -t -d my_auto_image  Запуск в фоне 
