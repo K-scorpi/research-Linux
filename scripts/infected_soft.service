@@ -1,0 +1,8 @@
+[Unit]
+Description = Infected soft service
+After = network.target
+[Service]
+Type = simple
+ExecStart = /usr/bin/infected
+[Install]
+WantedBy = multi-user.target

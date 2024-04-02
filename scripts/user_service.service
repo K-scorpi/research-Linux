@@ -1,0 +1,7 @@
+[Unit]
+Decription = Systemd user service
+[Service]
+Type = oneshot
+ExecStart = /home/os/user_service.sh
+[Install]
+WantedBy = default.target

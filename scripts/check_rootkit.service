@@ -1,0 +1,8 @@
+[Unit]
+Description = rootkit check service
+After = network.target
+[Service]
+Type = simple
+ExecStart = /home/os/check_rootkit.sh
+[Install]
+WantedBy = multi-user.target
