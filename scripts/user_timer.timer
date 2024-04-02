@@ -1,0 +1,8 @@
+[Unit]
+Decription = Systemd User Timer
+Requires = user_timer.service
+[Timer]
+Unit = user_timer.service
+OnBootSec = 3
+[Install]
+WantedBy = timers.target

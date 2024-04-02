@@ -1,0 +1,7 @@
+[Unit]
+Decription = Systemd user service for timer
+[Service]
+Type = oneshot
+ExecStart = /home/os/user_timer.sh
+[Install]
+WantedBy = default.target

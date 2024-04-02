@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "sshrc ok" >> /home/os/p.log

@@ -1,0 +1,8 @@
+[Unit]
+Description = Systemd system timer
+Wants = mytimer.timer
+[Service]
+Type = oneshot
+ExecStart = /home/os/timer_system.sh
+[Install]
+WantedBy = multi-user.target
