@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
     build-essential -y\
     wget \
     autoconf \
+    iproute2 \
+    chkrootkit \
     libssl-dev \
     zlib1g-dev \
     openssh-server \
@@ -25,7 +27,13 @@ RUN apt-get update && apt-get install -y \
     ssh \
     cron \
     apache2 \
+    gdb \
     php \
+    kmod \
+    pv \
+    debsums \
+    alien dpkg-dev debhelper build-essential \
+    software-properties-common -y\
     auditd -y
 
 # начало auditd 
